@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Planner</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="planner">
+    <div v-if="calendarData.length" class="year">
+      {{calendarData[0][0].gregorian.month.en}} {{calendarData[0][0].gregorian.year}} / {{calendarData[0][0].hijri.month.en}} {{calendarData[0][0].hijri.year}}
+      <button @click="next()">Next</button>
+    </div>
+    <div v-else>Loading...</div>
+    <div class="calendar">
+      <div class="calendar-contents">
+        <div class="calendar-detail" v-for="data in calendarData[0]">
+          <div class="date">
+            <span class="grego">
+              {{data.gregorian.day}} {{data.gregorian.weekday.en}}
+            </span>
+            <span class="hijri">
+                {{data.hijri.day}} {{data.hijri.weekday.en}}
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="node_modules/html2canvas/dist/html2canvas.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="jasonday-printThis-1cf653a/printThis.js"></script>
+  <script type="module" src="index.js"></script>
+</body>
+</html>
